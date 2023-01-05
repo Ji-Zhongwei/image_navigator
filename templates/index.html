@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="{{ url_for(".static", filename="news-navigator.css") }}">
+  <script src="//assets.adobedtm.com/dac62e20b491e735c6b56e64c39134d8ee93f9cf/satelliteLib-6b47f831c184878d7338d4683ecf773a17973bb9.js"></script>
+  <script type="text/javascript"
+           src="{{ url_for('.static', filename='app.js') }}"></script>
+    <meta charset="UTF-8">
+    <title>Image Navigator</title>
+</head>
+
+<body onload="set_index_page()"> 
+
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <p>Loading...</p>
+    <div class="loader"></div>
+  </div>
+</div>
+
+<h2>Search photos using navigator!</h2>
+
+{% from "_formhelpers.html" import render_field %}
+<form method="get">
+  <table class="searchgrid" style="width: 70%;">
+    <tr>
+      <th>Keyword</th>
+    </tr>
+  <td>
+    {{ render_field(form.search) }}
+  </td>
+  <td>
+    <button type="submit" style="font-size:20px; font-family:monospace;" onclick="loading();"
+    >&#x1F50D;
+    </button>
+  </td>
+</tr>
+</table>
+<div id="samplesearches" style="text-align:center; margin-top:10px;">
+</div>
+
+<div hidden id = "start_time_bar">
+{{ render_field(form.start_time) }}
+</div>
+
+</form>
+
+
+<script>
+  if(window['_satellite']){_satellite.pageBottom();}
+</script>
+
+</body>
+
+</html>
